@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Clothing Search API",
+        "version": "1.0.0",
+        "description": "An API for searching clothing items based on image URLs"
+    },
+    "paths": {
+        "/search": {
+            "get": {
+                "summary": "Search clothing items by image URL",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "description": "The image URL to search clothing for"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful search results",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ClothingItem"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ClothingItem": {
+                "type": "object",
+                "properties": {
+                    "brand": {
+                        "type": "string",
+                        "description": "The brand of the clothing item"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name or model of the clothing item"
+                    },
+                    "color": {
+                        "type": "string",
+                        "description": "The color of the clothing item"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of clothing (e.g., Pants, Dress, Skirt)",
+                        "enum": [
+                            "Pants",
+                            "Dress",
+                            "Skirt"
+                        ]
+                    },
+                    "gender": {
+                        "type": "string",
+                        "description": "The gender category of the clothing item",
+                        "enum": [
+                            "Men's",
+                            "Women's",
+                            "Unisex"
+                        ]
+                    },
+                    "product_number": {
+                        "type": "string",
+                        "description": "Unique product identifier"
+                    }
+                },
+                "required": [
+                    "brand",
+                    "name",
+                    "color",
+                    "type",
+                    "gender",
+                    "product_number"
+                ]
+            }
+        }
+    }
+}
