@@ -86,6 +86,19 @@ def find_similar_items(target_embedding, inventory):
     results.sort(key=lambda x: x[1], reverse=True)  # Sort descending by similarity
     return results
 
+def compare_embeddings(vec1, vec2):
+    """
+    Wrapper for cosine similarity between two embedding vectors.
+
+    Args:
+        vec1 (list): First embedding vector.
+        vec2 (list): Second embedding vector.
+
+    Returns:
+        float: Cosine similarity score.
+    """
+    return cosine_similarity(vec1, vec2)
+
 # --- Task 3: Main Function for CLI and Import ---
 def main():
     parser = argparse.ArgumentParser(description="Generate embeddings and compare clothing items.")
