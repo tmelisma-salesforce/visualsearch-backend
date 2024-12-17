@@ -1,25 +1,79 @@
 # visualsearch-backend
 
-Allow Salesforce Agentforce agents to provide clothing recommendations to user based on pictures they provide. A user provides a picture of a cool leather jacket they like and Agentforce provides the most similar jackets from its inventory.
+The `visualsearch-backend` is a web service designed to assist Salesforce Agentforce agents in providing clothing recommendations to users based on images they provide. For example, a user can upload a picture of a cool leather jacket they like, and the service will return the most similar jackets from the inventory.
+
+In addition to the web service, you will need to configure your Agentforce agent to route clothing recommendation requests to the API endpoint.
+
+### How It Works
+
+1. **Image Upload**: The user uploads an image of a clothing item via a URL.
+2. **Image Description**: The service generates a textual description of the image using an image description model.
+3. **Embedding Creation**: The textual description is converted into a vector embedding using a pre-trained language model.
+4. **Inventory Comparison**: The service compares the generated embedding with precomputed embeddings of clothing items in the inventory.
+5. **Similarity Calculation**: Similarity scores are calculated between the user's image embedding and the inventory embeddings.
+6. **Result Sorting and Filtering**: The service filters and sorts the inventory items based on their similarity scores, returning the top matches.
 
 ## Setup
 
-### Python backend
+### Python Backend Setup
 
-- Create .env with OPENAI_API_KEY=
-- Create venv, pip install what's in requirements.txt etc
-- Repo runs directly in Heroku
+1. **Environment Variables**:
+   - Create a `.env` file with the OpenAI API key:
+     ```plaintext
+     OPENAI_API_KEY=your_openai_api_key
+     ```
 
-### Salesforce
+2. **Virtual Environment**:
+   - Create a virtual environment:
+     ```bash
+     python -m venv venv
+     ```
+   - Activate the virtual environment:
+     - On macOS/Linux:
+       ```bash
+       source venv/bin/activate
+       ```
+     - On Windows:
+       ```bash
+       venv\Scripts\activate
+       ```
 
-- Create named credentials and unauthenticated external credentials
-- Create external service, use the OpenAPI 3.0 spec in the repo
-- Create a custom object to model the data (clothing Item)
-- Create a flow with input URL and output record list
-  - Call out the external service
-  - Transform the data to the custom object format
-  - Assign custom object to output variables
-- Add permission set for agent user to access external credentials
-  - Either employee user using the assistive agent or agent service user using customer agent
-- Add flow to agent actions
-- Add agent action to specific agent with topic, instructions etc
+3. **Install Dependencies**:
+   - Install the required packages:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+4. **Run the Application**:
+   - The application can be run directly on Heroku. If running locally, use:
+     ```bash
+     python app.py
+     ```
+
+### Salesforce Setup
+
+1. **Named Credentials and Unauthenticated External Credentials**:
+   - Create named credentials and unauthenticated external credentials in Salesforce to securely access the backend service.
+
+2. **External Service**:
+   - Create an external service in Salesforce using the OpenAPI 3.0 specification provided in the repository.
+
+3. **Custom Object**:
+   - Create a custom object to model the data (e.g., `Clothing_Item__c`).
+
+4. **Flow**:
+   - Create a flow with an input URL and an output record list:
+     - Call out the external service to process the image URL.
+     - Transform the data to the custom object format.
+     - Assign the custom object to output variables.
+
+5. **Permission Set**:
+   - Add a permission set for the agent user to access the external credentials:
+     - Either an employee user using the assistive agent or an agent service user using the customer agent.
+
+6. **Agent Actions**:
+   - Add the flow to agent actions.
+   - Assign the agent action to specific agents with topics and instructions.
+
+## Copyright
+Copyright Toni Melisma 2024
