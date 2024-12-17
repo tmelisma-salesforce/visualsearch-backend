@@ -6,6 +6,7 @@ Allow Salesforce Agentforce agents to provide clothing recommendations to user b
 
 ### Python backend
 
+- Create .env with OPENAI_API_KEY=
 - Create venv, pip install what's in requirements.txt etc
 - Repo runs directly in Heroku
 
