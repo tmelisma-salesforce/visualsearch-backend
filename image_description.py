@@ -33,7 +33,7 @@ def describe_image(image_url):
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": "Describe this image in detail. Focus on clothing-related attributes like color, style, fit, fabric, and any distinctive features."},
+                        {"type": "text", "text": "Describe the clothing showcased in this image in detail. Don't mention anything but the clothing. Focus on attributes like type of clothing (dress, pants, hat, etc), likely gender or unisex, length, fit, fabric, decorations or lack of, and any distinctive features. Also comment on aesthetic style, subculture or social group, seasonal and weather fit, activity suitability, material qualities and economic attributes."},
                         {
                             "type": "image_url",
                             "image_url": {
