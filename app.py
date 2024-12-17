@@ -90,7 +90,8 @@ def search_clothing():
         print(f"Item: {item.get('name', 'Unknown')}, Similarity: {similarity}")
         
         if similarity >= 0.5:
-            item_with_similarity = item.copy()
+            # Exclude the "embedding" field from the result
+            item_with_similarity = {k: v for k, v in item.items() if k != "embedding"}
             item_with_similarity["similarity"] = similarity
             results.append(item_with_similarity)
     
