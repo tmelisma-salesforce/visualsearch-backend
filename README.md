@@ -13,6 +13,10 @@ In addition to the web service, you will need to configure your Agentforce agent
 5. **Similarity Calculation**: Similarity scores are calculated between the user's image embedding and the inventory embeddings.
 6. **Result Sorting and Filtering**: The service filters and sorts the inventory items based on their similarity scores, returning the top matches.
 
+### Test Data
+
+The app compares the user's images to its "inventory" of clothing. This is test data that you can find in ```clothing_inventory.py```. To make it searchable, you have to create embeddings. They're found in ```clothing_inventory_with_embeddings.json```. You can re-generate the embeddings by running ```python3 embeddings.py --generate```.
+
 ## Setup
 
 ### Python Backend Setup
