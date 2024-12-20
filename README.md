@@ -2,7 +2,7 @@
 
 The `visualsearch-backend` is a web service designed to assist Salesforce Agentforce agents in providing clothing recommendations to users based on images they provide. For example, a user can upload a picture of a cool leather jacket they like, and the service will return the most similar jackets from the inventory.
 
-![Demo of Agentforce visual search](./2024-12-20-agentforce-sdk-visual-search.gif | height=700)
+<img src="./2024-12-20-agentforce-sdk-visual-search.gif" height="610" width="282" alt="Visual Search GIF">
 
 In addition to the web service, you will need to configure your Agentforce agent to route clothing recommendation requests to the API endpoint.
 
